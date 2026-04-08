@@ -24,7 +24,7 @@ const BookingSection = () => {
     const message = encodeURIComponent(
       `Olá Deyvison! Meu nome é ${name.trim()}. Quero tatuar meu ${area}. Podemos agendar?`
     );
-    window.open(`https://api.whatsapp.com/send?phone=5521999999999&text=${message}`, "_blank");
+    window.open(`https://api.whatsapp.com/send?phone=5522981033329&text=${message}`, "_blank");
   };
 
   return (
