@@ -22,10 +22,9 @@ const BookingSection = () => {
     if (!name.trim() || !phone.trim() || !area) return;
 
     const message = encodeURIComponent(
-      `Olá Deyvison, meu nome é ${name.trim()}. Quero tatuar meu ${area}. Podemos agendar?`
+      `Olá Deyvison! Meu nome é ${name.trim()}. Quero tatuar meu ${area}. Podemos agendar?`
     );
-    // Replace with actual number
-    window.open(`https://wa.me/5500000000000?text=${message}`, "_blank");
+    window.open(`https://api.whatsapp.com/send?phone=5521999999999&text=${message}`, "_blank");
   };
 
   return (
