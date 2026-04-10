@@ -3,6 +3,8 @@ import { Send } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const bodyAreas = ["Braço", "Perna", "Costas", "Peito", "Outro"];
+const sizes = ["Pequena", "Média", "Grande"];
+const references = ["Sim", "Não"];
 
 const formatPhone = (value: string) => {
   const digits = value.replace(/\D/g, "").slice(0, 11);
@@ -16,13 +18,15 @@ const BookingSection = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [area, setArea] = useState("");
+  const [size, setSize] = useState("");
+  const [hasReference, setHasReference] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !area) return;
+    if (!name.trim() || !phone.trim() || !area || !size || !hasReference) return;
 
     const message = encodeURIComponent(
-      `Olá Deyvison! Meu nome é ${name.trim()}. Quero tatuar meu ${area}. Podemos agendar?`
+      `Olá Deyvison! Tudo bem?\n\nMeu nome é ${name.trim()} e vim pelo seu site.\n\nQuero fazer uma tatuagem no ${area}.\nTamanho aproximado: ${size}.\nTenho referência: ${hasReference}.\n\nSe precisar, posso te enviar imagens para facilitar o orçamento 👍\n\nQueria ver valores e disponibilidade para agendar.`
     );
     window.open(`https://api.whatsapp.com/send?phone=5522981033329&text=${message}`, "_blank");
   };
@@ -97,6 +101,52 @@ const BookingSection = () => {
               ))}
             </select>
           </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-muted-foreground tracking-wide">
+              Tamanho da Tatuagem
+            </label>
+            <select
+              required
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+              className="w-full bg-secondary/50 border border-border rounded-sm px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all font-body text-sm appearance-none"
+            >
+              <option value="" disabled>
+                Selecione o tamanho
+              </option>
+              {sizes.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-muted-foreground tracking-wide">
+              Possui referência?
+            </label>
+            <select
+              required
+              value={hasReference}
+              onChange={(e) => setHasReference(e.target.value)}
+              className="w-full bg-secondary/50 border border-border rounded-sm px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all font-body text-sm appearance-none"
+            >
+              <option value="" disabled>
+                Selecione
+              </option>
+              {references.map((r) => (
+                <option key={r} value={r}>
+                  {r}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <p className="text-xs text-muted-foreground/70 text-center font-body">
+            Quanto mais detalhes você preencher, mais rápido e preciso será seu atendimento.
+          </p>
 
           <button
             type="submit"
