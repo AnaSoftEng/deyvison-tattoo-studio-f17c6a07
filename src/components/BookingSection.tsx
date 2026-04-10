@@ -18,13 +18,15 @@ const BookingSection = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [area, setArea] = useState("");
+  const [size, setSize] = useState("");
+  const [hasReference, setHasReference] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !area) return;
+    if (!name.trim() || !phone.trim() || !area || !size || !hasReference) return;
 
     const message = encodeURIComponent(
-      `Olá Deyvison! Meu nome é ${name.trim()}. Quero tatuar meu ${area}. Podemos agendar?`
+      `Olá Deyvison! Tudo bem?\n\nMeu nome é ${name.trim()} e vim pelo seu site.\n\nQuero fazer uma tatuagem no ${area}.\nTamanho aproximado: ${size}.\nTenho referência: ${hasReference}.\n\nSe precisar, posso te enviar imagens para facilitar o orçamento 👍\n\nQueria ver valores e disponibilidade para agendar.`
     );
     window.open(`https://api.whatsapp.com/send?phone=5522981033329&text=${message}`, "_blank");
   };
