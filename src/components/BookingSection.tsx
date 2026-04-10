@@ -102,6 +102,52 @@ const BookingSection = () => {
             </select>
           </div>
 
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-muted-foreground tracking-wide">
+              Tamanho da Tatuagem
+            </label>
+            <select
+              required
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+              className="w-full bg-secondary/50 border border-border rounded-sm px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all font-body text-sm appearance-none"
+            >
+              <option value="" disabled>
+                Selecione o tamanho
+              </option>
+              {sizes.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-muted-foreground tracking-wide">
+              Possui referência?
+            </label>
+            <select
+              required
+              value={hasReference}
+              onChange={(e) => setHasReference(e.target.value)}
+              className="w-full bg-secondary/50 border border-border rounded-sm px-4 py-3 text-foreground focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all font-body text-sm appearance-none"
+            >
+              <option value="" disabled>
+                Selecione
+              </option>
+              {references.map((r) => (
+                <option key={r} value={r}>
+                  {r}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <p className="text-xs text-muted-foreground/70 text-center font-body">
+            Quanto mais detalhes você preencher, mais rápido e preciso será seu atendimento.
+          </p>
+
           <button
             type="submit"
             className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground font-body font-semibold text-sm tracking-wider uppercase px-8 py-4 rounded-sm transition-all duration-300 gold-glow gold-glow-hover hover:brightness-110"
