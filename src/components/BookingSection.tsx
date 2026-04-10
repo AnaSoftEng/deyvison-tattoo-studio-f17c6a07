@@ -3,6 +3,8 @@ import { Send } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const bodyAreas = ["Braço", "Perna", "Costas", "Peito", "Outro"];
+const sizes = ["Pequena", "Média", "Grande"];
+const references = ["Sim", "Não"];
 
 const formatPhone = (value: string) => {
   const digits = value.replace(/\D/g, "").slice(0, 11);
