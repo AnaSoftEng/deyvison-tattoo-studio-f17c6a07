@@ -6,24 +6,16 @@ const bodyAreas = ["Braço", "Perna", "Costas", "Peito", "Outro"];
 const sizes = ["Pequena", "Média", "Grande"];
 const references = ["Sim", "Não"];
 
-const formatPhone = (value: string) => {
-  const digits = value.replace(/\D/g, "").slice(0, 11);
-  if (digits.length <= 2) return digits;
-  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
-};
-
 const BookingSection = () => {
   const { ref, isVisible } = useScrollAnimation();
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
   const [area, setArea] = useState("");
   const [size, setSize] = useState("");
   const [hasReference, setHasReference] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !area || !size || !hasReference) return;
+    if (!name.trim() || !area || !size || !hasReference) return;
 
     const message = encodeURIComponent(
       `Olá Deyvison! Tudo bem?\n\nMeu nome é ${name.trim()} e vim pelo seu site.\n\nQuero fazer uma tatuagem no ${area}.\nTamanho aproximado: ${size}.\nTenho referência: ${hasReference}.\n\nSe precisar, posso te enviar imagens para facilitar o orçamento 👍\n\nQueria ver valores e disponibilidade para agendar.`
@@ -63,20 +55,6 @@ const BookingSection = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Seu nome"
-              className="w-full bg-secondary/50 border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all font-body text-sm"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-muted-foreground tracking-wide">
-              WhatsApp
-            </label>
-            <input
-              type="tel"
-              required
-              value={phone}
-              onChange={(e) => setPhone(formatPhone(e.target.value))}
-              placeholder="(00) 00000-0000"
               className="w-full bg-secondary/50 border border-border rounded-sm px-4 py-3 text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all font-body text-sm"
             />
           </div>
