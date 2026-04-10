@@ -35,7 +35,7 @@ const BookingSection = () => {
             Agendamento
           </span>
           <h2 className="font-heading text-3xl md:text-5xl mt-3 text-gold-gradient">
-            Agende sua Consulta de Arte
+            Agende sua Consulta de Arte 🎯
           </h2>
         </div>
 
